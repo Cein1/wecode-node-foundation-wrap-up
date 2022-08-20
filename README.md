@@ -139,50 +139,50 @@ Express, TypeORM, Layered Pattern, Error Handling, 인증 & 인가 적용
 	*httpie 요청*
 	```bash
 	http -v GET http://127.0.0.1:8000/posts 'Authorization:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImlhdCI6MTY2MDg3MDMxNywiZXhwIjoxNjYxNjQ3OTE3fQ.0YZvHrgpztw_SPlwompjBsX1qD78asb8f6DgMOW44dM'
+	```
 
 	*response message*
-	```
-	{
-	    "data": {
-		"userId": 30,
-		"userProfileImage": "http://..."
-		"posts": [
-		    {
-			"content": "blablabla",
-			"created_at": "2022-08-14T23:21:19.000Z",
-			"id": 8,
-			"title": "new",
-			"updated_at": null,
-			"user_id": 30
-		    },
-		    {
-			"content": "blablabla",
-			"created_at": "2022-08-14T23:22:56.000Z",
-			"id": 9,
-			"title": "new",
-			"updated_at": null,
-			"user_id": 30
-		    },
-		    {
-			"content": "blablabla",
-			"created_at": "2022-08-14T23:24:21.000Z",
-			"id": 10,
-			"title": "new",
-			"updated_at": null,
-			"user_id": 30
-		    },
-		    {
-			"content": "blablabla",
-			"created_at": "2022-08-14T23:25:33.000Z",
-			"id": 11,
-			"title": "new",
-			"updated_at": null,
-			"user_id": 30
+	```json
+		{
+		    "data": {
+			"userId": 30,
+			"userProfileImage": "http://..."
+			"posts": [
+			    {
+				"content": "blablabla",
+				"created_at": "2022-08-14T23:21:19.000Z",
+				"id": 8,
+				"title": "new",
+				"updated_at": null,
+				"user_id": 30
+			    },
+			    {
+				"content": "blablabla",
+				"created_at": "2022-08-14T23:22:56.000Z",
+				"id": 9,
+				"title": "new",
+				"updated_at": null,
+				"user_id": 30
+			    },
+			    {
+				"content": "blablabla",
+				"created_at": "2022-08-14T23:24:21.000Z",
+				"id": 10,
+				"title": "new",
+				"updated_at": null,
+				"user_id": 30
+			    },
+			    {
+				"content": "blablabla",
+				"created_at": "2022-08-14T23:25:33.000Z",
+				"id": 11,
+				"title": "new",
+				"updated_at": null,
+				"user_id": 30
+			    }
+			],
 		    }
-		],
-	    }
-	}
-
+		}
 	```
 <br>
 
