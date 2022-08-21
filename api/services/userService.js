@@ -17,17 +17,24 @@ const getUserById = async (id) => {
 const signUp = async (name, email, profileImage, password) => {
 	const emailRegex    =/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
 	const passwordRegex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
-		
+	
+	if ( !name || !email || !password || !profileImage ) {
+		const error = new Error('KEY_ERROR')
+		error.statusCode = 400
+
+		throw error
+	}
+	
 	if (!emailRegex.test(email)) {
 		const error = new Error('INVALID_EMAIL')
-		error.statusCode = 401
+		error.statusCode = 400
 
 		throw error
 	}
 
 	if (!passwordRegex.test(password)) {
 		const error = new Error('INVALID_PASSWORD')
-		error.statusCode = 401
+		error.statusCode = 400
 
 		throw error
 	}

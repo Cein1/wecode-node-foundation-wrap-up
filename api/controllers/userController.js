@@ -1,23 +1,13 @@
 const { userService } = require('../services')
+const { catchAsync } = require('../utils/error')
 
-const signUp = async (req, res) => {
+const signUp = catchAsync(async (req, res) => {
   const { name, email, profileImage, password } = req.body;
 
-	if ( !name || !email || !password || !profileImage ) {
-		const error = new Error('KEY_ERROR')
-		error.statusCode = 400
+	const insertId = await userService.signUp(name, email, profileImage, password)
 
-		throw error
-	}
-	
-	try {
-		const insertId = await userService.signUp(name, email, profileImage, password)
-		res.status(201).json({ insertId });
-
-	} catch (error) {
-		res.status(error.statusCode).json({ message: error.message });
-	}
-}
+	res.status(201).json({ insertId });
+})
 
 const signIn = async (req, res) => {
 	const { email, password } = req.body

@@ -2,9 +2,7 @@ const jwt = require('jsonwebtoken')
 const { promisify } = require('util')
 const { userService } = require('../services')
 
-const { catchAsync } = require('../utils/error')
-
-const loginRequired = catchAsync(async (req, res, next) => {
+const loginRequired = async (req, res, next) => {
 
 	// 1) Getting token and check of it's there
   const accessToken = req.headers.authorization
@@ -13,7 +11,7 @@ const loginRequired = catchAsync(async (req, res, next) => {
 		const error = new Error('NEED_ACCESS_TOKEN')
 		error.statusCode = 401
 		
-		return next(error)
+		return res.status(error.statusCode).json({message: error.message})
 	}
 
   // 2) Verification token
@@ -26,12 +24,12 @@ const loginRequired = catchAsync(async (req, res, next) => {
 		const error = new Error('USER_DOES_NOT_EXIST')
 		error.statusCode = 404
 		
-		return next(error)
+		return res.status(error.statusCode).json({message: error.message})
 	}
 
   // 4) GRANT ACCESS
   req.user = user;
   next();
-})
+}
 
 module.exports = { loginRequired }
